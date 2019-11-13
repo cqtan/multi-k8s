@@ -23,4 +23,4 @@ after_success:
   - docker push couchcat/docker-fib-client
   - docker push couchcat/docker-fib-nginx
   - docker push couchcat/docker-fib-worker
-  - docker push couchcat/docker-fib-serve
+  - docker push couchcat/docker-fib-server
