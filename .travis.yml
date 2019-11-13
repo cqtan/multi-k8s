@@ -11,7 +11,7 @@ script:
 
 # Build production files with default Dockerfile for each image
 after_success:
-  - docker build -t couchcat/docker-fib-client ./client
+  - docker build -t couchcat/docker-fib-react ./client
   - docker build -t couchcat/docker-fib-nginx ./nginx
   - docker build -t couchcat/docker-fib-worker ./worker
   - docker build -t couchcat/docker-fib-server ./server
@@ -20,7 +20,7 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   # Take those image and push them to Docker Hub
-  - docker push couchcat/docker-fib-client
+  - docker push couchcat/docker-fib-react
   - docker push couchcat/docker-fib-nginx
   - docker push couchcat/docker-fib-worker
   - docker push couchcat/docker-fib-server
