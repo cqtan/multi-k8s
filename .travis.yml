@@ -1,0 +1,26 @@
+sudo: required
+services:
+  - docker
+
+# Perform React tests first
+before_install:
+  - docker build -t couchcat/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true USERNAME/react-test npm test
+
+# Build production files with default Dockerfile for each image
+after_success:
+  - docker build -t couchcat/docker-fib-client -f ./client
+  - docker build -t couchcat/docker-fib-nginx -f ./nginx
+  - docker build -t couchcat/docker-fib-worker -f ./worker
+  - docker build -t couchcat/docker-fib-server -f ./server
+
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  # Take those image and push them to Docker Hub
+  - docker push couchcat/docker-fib-client
+  - docker push couchcat/docker-fib-nginx
+  - docker push couchcat/docker-fib-worker
+  - docker push couchcat/docker-fib-serve
