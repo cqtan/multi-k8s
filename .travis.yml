@@ -11,10 +11,10 @@ script:
 
 # Build production files with default Dockerfile for each image
 after_success:
-  - docker build -t couchcat/docker-fib-client -f ./client
-  - docker build -t couchcat/docker-fib-nginx -f ./nginx
-  - docker build -t couchcat/docker-fib-worker -f ./worker
-  - docker build -t couchcat/docker-fib-server -f ./server
+  - docker build -t couchcat/docker-fib-client ./client
+  - docker build -t couchcat/docker-fib-nginx ./nginx
+  - docker build -t couchcat/docker-fib-worker ./worker
+  - docker build -t couchcat/docker-fib-server ./server
 
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
