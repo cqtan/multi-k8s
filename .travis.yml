@@ -31,7 +31,7 @@ deploy:
   app: multi-docker-fib
   env: MultiDockerFib-env
   bucket_name: elasticbeanstalk-eu-central-1-728154735203
-  bucket_path: docker-react-primer
+  bucket_path: multi-docker-fib
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
