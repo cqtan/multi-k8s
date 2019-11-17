@@ -13,6 +13,7 @@ function App() {
           <img src={logo} className="App-logo" alt="logo" />
           <Link to="/">Home</Link>
           <Link to="/otherpage">Other Page</Link>
+          <p>Dummy k8s change!</p>
           <div>
             <Route exact path="/" component={Fib} />
             <Route exact path="/otherpage" component={OtherPage} />
